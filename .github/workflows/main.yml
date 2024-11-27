@@ -14,7 +14,7 @@ jobs:
         with:
           repository: FouadRaheb/Watusi-for-WhatsApp
           ref: master
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
 
       - name: Sync changes
         run: |
