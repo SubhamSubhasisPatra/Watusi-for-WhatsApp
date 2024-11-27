@@ -1,0 +1,26 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight UTC
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: FouadRaheb/Watusi-for-WhatsApp
+          ref: master
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync changes
+        run: |
+          git config --global user.name "subhamsubhasispatra"
+          git config --global user.email "subhasispatra94@gmail.com"
+          git remote add upstream https://github.com/FouadRaheb/Watusi-for-WhatsApp.git  # Replace with the original repository URL
+          git fetch upstream
+          git checkout master  # Replace with the branch you want to sync
+          git merge upstream/master  # Replace with the branch you want to sync
+          git push origin master  # Replace with the branch you want to sync
