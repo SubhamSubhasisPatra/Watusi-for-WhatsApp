@@ -28,4 +28,4 @@ jobs:
 
       - name: Merge Changes from Upstream
         run: |
-          git merge upstream/master
+          git merge upstream/master --allow-unrelated-histories
